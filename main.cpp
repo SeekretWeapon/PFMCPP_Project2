@@ -15,16 +15,12 @@ video: Chapter 2 - Part 3
  
  
  1) Write down the names of the 6 major primitive types available in C++  here:
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ int 
+ char
+ bool
+ float 
+ unsigned int 
+ double
 2) for each primitive type, write out 3 variable declarations inside the variableDeclaration() function on line 59.
     a) give each variable declaration an initial value
         - just ignore wchar_t. you do not need to declare 3 variables of type 'wchar_t'
@@ -59,10 +55,17 @@ void variableDeclarations()
 {
     //example:
     int number = 2; //declaration of a variable named "number", that uses the primitive type 'int', and the variable's initial value is '2'
-    
+    int filterCutoff = -2, masterVolume = -1, filterFreq = 4;
+    char rootNote = 'C', majorThird = 'E', majorFifth = 'G';
+    bool isNoteInScale = true, isNoteTheSame = false, isThereAnInput = true;
+    float lfo = 257387, attack = 5353, decay = 25528;
+    double mids = 23.5685739, treble = 73.687346282, bass = 35.74362382;
+    unsigned int midiChannel = 1, midiCC = 42, midiNote = 27;
+
+
 
     
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
+    ignoreUnused(number, filterCutoff, masterVolume, filterFreq, rootNote, majorThird, majorFifth, isNoteInScale, isNoteTheSame, isThereAnInput, lfo, attack, decay, mids, treble, bass, midiChannel, midiCC, midiNote); //passing each variable declared to the ignoreUnused() function
 }
 
 /*
@@ -79,43 +82,80 @@ bool rentACar(int rentalDuration, int carType = 0)  //function declaration with 
 /*
  1)
  */
-
+void getKeyboardInfo(unsigned int lowestKey, unsigned int highestKey)
+{ 
+    ignoreUnused(lowestKey, highestKey); 
+}
 /*
  2)
  */
-
+int transformMidi(int midiInputValue)
+{ 
+    ignoreUnused(midiInputValue); 
+    return midiInputValue++;
+}
 /*
  3)
  */
-
+void setLfoRange(int min = 0, int max = 127)
+{
+    ignoreUnused(min, max);
+}
 /*
  4)
  */
-
+bool isMidiNoteInScale(int midiNoteValue, char rootNote)
+{
+    ignoreUnused(midiNoteValue, rootNote);
+    return true;
+}
 /*
  5)
  */
-
+bool isNoteC (int midiValue)
+{
+    ignoreUnused(midiValue);
+    return true;
+}
 /*
  6)
  */
-
+bool isEqLevel(double bass, double mids, double treble)
+{
+    ignoreUnused(bass, mids, treble);
+    return {};
+}
 /*
  7)
  */
-
+int setToZero(int bassLevel = 0, int midLevel = 0, int trebleLevel = 0)
+{
+    ignoreUnused(bassLevel, midLevel, trebleLevel);
+    return {};
+}
 /*
  8)
  */
-
+void getMidiInfo(int channel = 1, int device = 1, int value = 42)
+{
+    ignoreUnused(channel, device, value);
+}
 /*
  9)
  */
-
+bool isThereSound(bool volumeUp = true, bool deviceConfigured = true, bool soundOutput = true)
+{
+    ignoreUnused(volumeUp, deviceConfigured, soundOutput);
+    return true;
+}
 /*
  10)
  */
-
+bool amIDoingThisRight(int scaleOfOneToTen = 7, bool doIPass = true, bool canIThinkOfMore = true)
+{
+    ignoreUnused(scaleOfOneToTen, doIPass, canIThinkOfMore);
+    return {};
+}
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -136,27 +176,27 @@ int main()
     auto carRented = rentACar(6, 2); 
     
     //1)
-    
+    getKeyboardInfo(1, 127);
     //2)
-    
+    auto transformedMidi = transformMidi(5);
     //3)
-    
+    setLfoRange(27,42);
     //4)
-    
+    auto noteInScale = isMidiNoteInScale(3, 'c');
     //5)
-    
+    auto NoteIsC = isNoteC(12);
     //6)
-    
+    auto eqLevel = isEqLevel(4.2,4.2,4.2);
     //7)
-    
+    auto zero = setToZero(0,0,0);
     //8)
-    
+    getMidiInfo(1,1,12);
     //9)
-    
+    auto soundOn = isThereSound(true,true,true);
     //10)
+    auto didIt = amIDoingThisRight(10, true, true);
     
-    
-    ignoreUnused(carRented);
+    ignoreUnused(carRented, getKeyboardInfo, transformMidi,setLfoRange, isMidiNoteInScale, isNoteC, isEqLevel, setToZero, getMidiInfo, isThereSound, amIDoingThisRight, transformedMidi, noteInScale, NoteIsC, eqLevel, zero, soundOn, didIt);
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
